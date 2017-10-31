@@ -38,12 +38,37 @@
             this.health += 10;
             console.log(this.name + ' just drank some Sake.');
         }
+        Ninja.prototype.punch = function(otherPlayer) {
+            var damage = 5;
+            var attack = "punched";
+            console.log(" " + otherPlayer.name + " was " + attack + " by " + this.name + " and lost " + damage + " points");
+            otherPlayer.health -= damage;
+        }
+        Ninja.prototype.kick = function(otherPlayer) {
+            var damage = 15 * this.strength;
+            var attack = "kicked";
+            console.log(" " + otherPlayer.name + " was " + attack + " by " + this.name + " and lost " + damage + " points");
+            otherPlayer.health -= damage;
+        }
 
+        console.log("   --- Ninja I --- ");
         var ninja1 = new Ninja("Hyabusa");
         ninja1.sayName();
         ninja1.showStats();
         ninja1.drinkSake();
         ninja1.showStats();
+
+        console.log("   --- Ninja II --- ");
+        var blue_ninja = new Ninja("Goemon");
+        var red_ninja = new Ninja("Bill Gates");
+        blue_ninja.showStats();
+        red_ninja.showStats();
+
+        red_ninja.punch(blue_ninja);
+        blue_ninja.showStats();
+
+        blue_ninja.kick(red_ninja);
+        red_ninja.showStats();
     </script>
 </body>
 
